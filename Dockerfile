@@ -5,7 +5,7 @@ COPY pom.xml /build/
 COPY src /build/src/
 
 RUN mvn clean package
-COPY target/booting.web-${VERSION}.jar target/application.jar
+COPY target/spring-boot-learn-${VERSION}.jar target/application.jar
 
 FROM openjdk:11.0.8-jre-slim
 WORKDIR /app
