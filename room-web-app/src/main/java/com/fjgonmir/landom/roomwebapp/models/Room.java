@@ -1,20 +1,30 @@
 package com.fjgonmir.landom.roomwebapp.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ROOM")
 public class Room {
 
+    @Id
+    @Column(name = "ROOM_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "NAME")
     private String name;
+    @Column(name = "BED_INFO")
     private String info;
-    private Integer number;
+    @Column(name = "ROOM_NUMBER")
+    private String roomNumber;
 
     public Room() {
     }
 
-    public Room(long id, String name, String info, Integer number) {
+    public Room(long id, String name, String info, String roomNumber) {
         this.id = id;
         this.name = name;
         this.info = info;
-        this.number = number;
+        this.roomNumber = roomNumber;
     }
 
     public long getId() {
@@ -41,11 +51,11 @@ public class Room {
         this.info = info;
     }
 
-    public Integer getNumber() {
-        return number;
+    public String getRoomNumber() {
+        return this.roomNumber;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
     }
 }

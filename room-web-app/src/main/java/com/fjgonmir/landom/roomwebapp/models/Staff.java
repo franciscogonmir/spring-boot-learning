@@ -1,13 +1,24 @@
 package com.fjgonmir.landom.roomwebapp.models;
 
+import javax.persistence.*;
+import java.util.UUID;
+
+@Entity
+@Table(name = "EMPLOYEE")
 public class Staff {
 
-    private long idStaff;
+    @Id
+    @Column(name = "EMPLOYEE_ID")
+    private String idStaff;
+    @Column(name = "FIRST_NAME")
     private String firstName;
+    @Column(name = "LAST_NAME")
     private String lastName;
-    private String position;
+    @Column(name="POSITION")
+    @Enumerated(EnumType.STRING)
+    private Position position;
 
-    public Staff(long idStaff, String firstName, String lastName, String position) {
+    public Staff(String idStaff, String firstName, String lastName, Position position) {
         this.idStaff = idStaff;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -15,13 +26,14 @@ public class Staff {
     }
 
     public Staff() {
+        this.idStaff = UUID.randomUUID().toString();
     }
 
-    public long getIdStaff() {
+    public String getIdStaff() {
         return idStaff;
     }
 
-    public void setIdStaff(long idStaff) {
+    public void setIdStaff(String idStaff) {
         this.idStaff = idStaff;
     }
 
@@ -41,11 +53,11 @@ public class Staff {
         this.lastName = lastName;
     }
 
-    public String getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 }
